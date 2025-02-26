@@ -11,7 +11,6 @@ export default function NewsPage() {
 
   return (
     <div id="home">
-      <h1>This is the news page.</h1>
       <ul>{links}</ul>
     </div>
   );
