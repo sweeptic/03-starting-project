@@ -43,7 +43,7 @@ export default function FilteredNewsPage({ params }) {
               const href = selectedYear ? `/archive/${selectedYear}/${link}` : `/archive/${link}`;
 
               return (
-                <li key="link">
+                <li key={link}>
                   <Link href={href}>{link}</Link>
                 </li>
               );
