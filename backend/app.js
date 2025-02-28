@@ -60,9 +60,7 @@ function initDb() {
   const { count } = db.prepare('SELECT COUNT(*) as count FROM news').get();
 
   if (count === 0) {
-    const insert = db.prepare(
-      'INSERT INTO news (slug, title, content, date, image) VALUES (?, ?, ?, ?, ?)'
-    );
+    const insert = db.prepare('INSERT INTO news (slug, title, content, date, image) VALUES (?, ?, ?, ?, ?)');
 
     DUMMY_NEWS.forEach((news) => {
       insert.run(news.slug, news.title, news.content, news.date, news.image);
@@ -72,11 +70,16 @@ function initDb() {
 
 const app = express();
 
-app.use(cors())
+app.use(cors());
 
 app.get('/news', (req, res) => {
   const news = db.prepare('SELECT * FROM news').all();
-  res.json(news);
+  //   console.log('backend news', news);
+  const stringified = JSON.stringify(news);
+  //   console.log('stringified', stringified);
+
+  //   res.json(news);
+  res.send(stringified);
 });
 
 initDb();

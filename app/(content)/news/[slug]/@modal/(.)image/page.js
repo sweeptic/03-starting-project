@@ -13,7 +13,7 @@ export default function InterceptedImagePage({ params }) {
   }
 
   const clickHandler = () => {
-    console.log('click');
+    // console.log('click');
     router.back();
   };
 
